@@ -52,4 +52,16 @@ onRowEditCancel(product: any, index: number) {
     this.allUsers[index] = this.clonedProducts[product.id];
     this.messageService.add({severity:'info', summary: ' Message', detail:'Annulé'}); 
 }
+
+onRowDrop(product:any){
+  let obj={
+    deadline:"",
+    tache:"",
+    detail:"",
+    progression:0
+  }
+  this.dbb.list('/users').update(product.$key,obj);
+  this.messageService.add({severity:'success', summary: ' Message', detail:'Vous avez supprimé cette tache'}); 
+  
+}
 }

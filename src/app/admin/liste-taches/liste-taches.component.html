@@ -99,6 +99,7 @@
             </td>
             <td style="text-align:center">
                 <button pButton pRipple *ngIf="!editing" type="button" icon="pi pi-pencil"  pInitEditableRow (click)="onRowEditInit(product)" class="p-button-rounded p-button-outlined p-button-warning"></button>
+                <button pButton pRipple *ngIf="!editing" type="button" icon="pi pi-trash"  pSaveEditableRow (click)="onRowDrop(product)" class="p-button-rounded p-button-outlined p-button-danger"></button>
                 <button pButton pRipple  *ngIf="editing" type="button" icon="pi pi-check" pSaveEditableRow (click)="onRowEditSave(product)" class="p-button-rounded p-button-outlined p-button-success"></button>
                 <button *ngIf="editing" pButton pRipple type="button" icon="pi pi-times"pCancelEditableRow (click)="onRowEditCancel(product, ri)" class="p-button-rounded p-button-danger p-button-outlined"></button>
             </td>
