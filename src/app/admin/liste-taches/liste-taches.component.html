@@ -1,0 +1,108 @@
+<p-toast position="top-right"></p-toast>
+<div class="flex-container">
+    <div><a  [routerLink]="['/login']"><i class="pi pi-arrow-left"[ngStyle]="{'margin':'20px','font-weight':'bold','color':'teal'}" ></i></a>
+    </div>
+    <div><h1 style="color:teal;"> Liste Des Taches</h1></div>
+</div>
+<div class="card" [ngStyle]="{'margin':'20px'}">     
+    <div class="content-section implementation" >
+        <p-table [value]="allUsers" dataKey="$key" editMode="row">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Tache</th>
+            <th>Detail</th>
+            <th>Etat</th>
+            <th>Progression</th>
+            <th>Deadline</th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product let-editing="editing" let-ri="rowIndex">
+        <tr [pEditableRow]="product">
+            <td>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        {{product.nom}}
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{product.nom}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        {{product.prenom}}
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{product.prenom}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" [(ngModel)]="product.tache" required>
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{product.tache}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" [(ngModel)]="product.detail">
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{product.detail}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <span class="bg-danger text-white" style="padding: 5px;border-radius: 1em;" *ngIf="product.progression==0">pas de tache</span>
+                        <span class="bg-warning text-white" style="padding: 5px;border-radius: 1em;" *ngIf="product.progression>0 && product.progression<=50">en cours</span>
+                        <span class="bg-primary text-white" style="padding: 5px;border-radius: 1em;" *ngIf="product.progression>50 && product.progression<100">presque finis</span>
+                        <span class="bg-success text-white" style="padding: 5px;border-radius: 1em;" *ngIf="product.progression==100">tache finis</span>
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        <span class="bg-danger text-white" style="padding: 5px;border-radius: 1em;" *ngIf="product.progression==0">pas de tache</span>
+                        <span class="bg-warning text-white" style="padding: 5px;border-radius: 1em;" *ngIf="product.progression>0 && product.progression<=50">en cours</span>
+                        <span class="bg-primary text-white" style="padding: 5px;border-radius: 1em;" *ngIf="product.progression>50 && product.progression<100">presque finis</span>
+                        <span class="bg-success text-white" style="padding: 5px;border-radius: 1em;" *ngIf="product.progression==100">tache finis</span>
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <p-progressBar [value]="product.progression"></p-progressBar>
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        <p-progressBar [value]="product.progression"></p-progressBar>
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td>
+                <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" [(ngModel)]="product.deadline">
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{product.deadline}}
+                    </ng-template>
+                </p-cellEditor>
+            </td>
+            <td style="text-align:center">
+                <button pButton pRipple *ngIf="!editing" type="button" icon="pi pi-pencil"  pInitEditableRow (click)="onRowEditInit(product)" class="p-button-rounded p-button-outlined p-button-warning"></button>
+                <button pButton pRipple  *ngIf="editing" type="button" icon="pi pi-check" pSaveEditableRow (click)="onRowEditSave(product)" class="p-button-rounded p-button-outlined p-button-success"></button>
+                <button *ngIf="editing" pButton pRipple type="button" icon="pi pi-times"pCancelEditableRow (click)="onRowEditCancel(product, ri)" class="p-button-rounded p-button-danger p-button-outlined"></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+</div></div>

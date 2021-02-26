@@ -1,0 +1,46 @@
+<p-toast position="top-right"></p-toast>
+<div class="wrapper" style="margin: 80px;">
+    <div class="box">
+        <div>
+            <div style=" margin: 20px;padding: 20px;border-radius:50px;">
+                <div style="display:flex">        
+                    <div style=" font-size: 20px;" class="bd flex-item">
+                        <a  [routerLink]="['/login']"><i class="pi pi-arrow-left"[ngStyle]="{'font-weight':'bold','color':'teal'}" ></i></a>
+                       </div> 
+                </div>
+            <hr class="hr-light">
+            <h2 class="flex-item" style="margin-left: 25px;">taches Du Jour</h2>  
+            <div>
+                <div *ngIf="user.tache!=''" style="border: 1px solid rgb(215, 227, 248);margin: 20px;padding: 20px;border-radius: 20px;">
+                    <div>
+                      <div style="margin: 20px;padding: 20px;">
+                        <h5 class="text-primary">{{user.nom}} {{user.prenom}}</h5>
+                        <p style="margin-top: 20px;">
+                             <span class="bg-success text-white" style="border-radius: 4px; padding: 5px; color: black;" >{{user.tache}} </span>
+                        </p>
+                        <p>{{ user.detail }}</p>
+                        <strong style="padding: 10px;border-right: 2px solid rgb(215, 227, 248);color:gray;">
+                            <i style="font-size: 1.5rem" class="pi pi-calendar"></i> 
+                        </strong>
+                        <strong style="padding: 10px;border-right: 2px solid rgb(215, 227, 248);color:gray;">
+                            <i class="pi pi-spin pi-spinner" style="font-size: 1.5rem"></i>
+                        </strong>
+                        <strong style="font-size: 15px;padding: 10px;color:gray;"><i style="font-size: 20px;padding: 10px;" class=" fas fa-calendar-alt"></i> {{user.deadline}} </strong>
+                        <div style="float: right;width: 20%;">
+                            <span><input style="width: 50%;" type="text" [(ngModel)]="user.progression"></span>
+                           <span><button style="margin: 10px;" pButton pRipple type="button" (click)="onRowEditSave(user)" icon="pi pi-check" class="p-button-rounded p-button-outlined p-mr-2"></button>
+                        </span>
+                            <p-progressBar [value]="user.progression"></p-progressBar>
+                        </div>
+               
+                      </div>
+                    </div></div>
+                </div>
+                <div *ngIf="user.tache==''" style="border: 1px solid rgb(215, 227, 248);margin: 20px;padding: 20px;border-radius: 20px;">
+                    <h2  class="bg-success text-white" style="border-radius: 4px; padding: 5px; color: black;" >Vous n'avez rien encore </h2>
+                </div> 
+            </div> 
+            </div>
+        </div>
+        
+    </div>

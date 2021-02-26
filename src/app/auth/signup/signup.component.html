@@ -1,0 +1,48 @@
+<div style="background-color: #f1f2f3" class="relative items-center bg-whiterounded-lg "> <!--md:flex -->
+    <div class="flex  align-items ">
+        <table style="margin:100px;margin-left: 20%;">
+            <tr>
+                <td>
+                    <form  #f="ngForm"  (ngSubmit)="Submit(f)" style="height: 600px;" class="bg-white shadow-md rounded px-8 pt-6">
+                        <h1 class="text-center text-teal-600">SignUp </h1>
+                        <div class="mb-2">
+                            <label class=" block text-center text-gray-500 text-sm mb-2" for="nom">
+                                Nom
+                            </label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="nom" [(ngModel)]="nom" name="nom" required type="text" placeholder="Nom">
+                        </div>
+                        <div class="mb-4">
+                            <label class=" block text-center text-gray-500 text-sm mb-2" for="prenom">
+                                Prenom
+                            </label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="prenom" [(ngModel)]="prenom" name="prenom" required type="text" placeholder="Prenom">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-center text-gray-500 text-sm  mb-2" for="username">
+                                Email
+                            </label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="username" [(ngModel)]="email" name="email"  required type="mail" placeholder="email">
+                        </div>
+                        <div class="mb-8">
+                            <label class=" block text-center text-gray-500 text-sm mb-2" for="password">
+                                Mot de passe
+                            </label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" [(ngModel)]="password" name="password" required type="password" placeholder="******************">
+                        </div>
+    
+                        <div class="flex items-center justify-between">
+                            <button type="submit" style="width: 300px;margin-left: 120px" class="text-center bg-teal-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                Connexion
+                            </button>
+                        </div><br>
+                        <a [routerLink]="['/login']">Vous avez deja un compte?</a>
+    
+                    </form>
+                </td>
+                <td style="height: 100%">
+                    <div style="opacity: 0.7;  background-color:rgb(7, 150, 160);width:270px;height:100%"></div>
+                </td>
+            </tr>
+        </table>
+    
+    </div></div>
